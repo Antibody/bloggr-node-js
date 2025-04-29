@@ -2,6 +2,8 @@
 
 ![Bloggr - Node.js Admin Dashboard](https://github.com/user-attachments/assets/47fdce14-177d-4e64-aef4-d10e9e19f1fb)
 
+🔗 Repo for Next.js version: https://github.com/Antibody/bloggr
+💻 Blog: https://bloggr.dev/blog
 
 ## Overview
 
