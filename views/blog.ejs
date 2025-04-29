@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Posts</title>
+    <!-- Inline script to prevent theme flash -->
+    <script>
+    (function() {
+      const preferredTheme = localStorage.getItem('theme');
+      let isDark = false;
+      if (preferredTheme) {
+        isDark = preferredTheme === 'dark';
+      } else {
+        isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+      if (isDark) {
+        // Apply to <html> element for earliest effect
+        document.documentElement.classList.add('dark-mode');
+      }
+    })();
+    </script>
+    <!-- scripts' END -->
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/blog.css">
+</head>
+<body>
+    <header>
+        <div style="position: fixed; top: 1rem; left: 1rem; z-index: 1000;">
+            <a href="/" aria-label="Go to Home" class="blog-icon-link" title="Back to Home">
+                &larr; <!-- Back to Home -->
+            </a>
+        </div>
+        <div style="position: fixed; top: 1rem; right: 1rem; z-index: 1000;">
+            <div id="theme-toggle" aria-label="Toggle Theme" tabindex="0" style="cursor:pointer; display:inline-block;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.62-.14 2.37-.36-1.36-.78-2.37-2.17-2.37-3.79 0-2.48 2.02-4.5 4.5-4.5 1.62 0 3.01 1.01 3.79 2.37.22-.75.36-1.54.36-2.37 0-4.97-4.03-9-9-9z"/></svg>
+            </div>
+        </div>
+        <div class="header-content">
+            <span class="logo"></span>
+        </div>
+    </header>
+    <main>
+        <h1><center>Blog Posts</center></h1>
+        <div id="blog-posts-container">
+            <% if (posts && posts.length > 0) { %>
+                <% posts.forEach(function(post) { %>
+                    <article class="blog-post-item">
+                        <h2><a href="/blog/<%= post.slug %>"><%= post.title %></a></h2> <!-- Changed link format -->
+                        <p class="post-meta">Published on: <%= new Date(post.date).toLocaleDateString() %></p>
+                       
+                        <p class="post-snippet"><%- post.snippet %></p> <!-- Unescaped snippet -->
+                        <div class="full-content-container" style="display: none; margin: 1em 0;"></div> <!-- Hidden container for full content -->
+                        <a href="#" data-slug="<%= post.slug %>" class="read-more-button">Read More &rarr;</a> <!-- Changed to button-like link with data-slug -->
+                    </article>
+                <% }); %>
+            <% } else { %>
+                <p>No blog posts found.</p>
+            <% } %>
+        </div>
+        <div id="pagination-controls">
+            <% if (typeof totalPages !== 'undefined' && totalPages > 1) { %>
+                <div class="pagination">
+                    <% if (currentPage > 1) { %>
+                        <a href="/blog?page=<%= currentPage - 1 %>" class="pagination-link">&laquo; Previous</a>
+                    <% } %>
+                    <% for (let i = 1; i <= totalPages; i++) { %>
+                        <% if (i === currentPage) { %>
+                            <span class="pagination-link current"><%= i %></span>
+                        <% } else { %>
+                            <a href="/blog?page=<%= i %>" class="pagination-link"><%= i %></a>
+                        <% } %>
+                    <% } %>
+                    <% if (currentPage < totalPages) { %>
+                        <a href="/blog?page=<%= currentPage + 1 %>" class="pagination-link">Next &raquo;</a>
+                    <% } %>
+                </div>
+            <% } %>
+        </div>
+    </main>
+    <script src="/js/utils.js"></script>
+    <script>initializeTheme();</script>
+    <script src="/js/blog.js"></script> <!-- blog.js for client-side interaction -->
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Use post data if available, otherwise use defaults -->
+    <title><%= post ? post.title : 'Post Not Found' %> - Bloggr</title>
+    <% if (post && post.seoDescription) { %>
+        <meta name="description" content="<%= post.seoDescription %>">
+    <% } else { %>
+        <meta name="description" content="Blog post from Bloggr">
+    <% } %>
+    <% if (post && post.seoKeywords) { %>
+        <meta name="keywords" content="<%= post.seoKeywords %>">
+    <% } %>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Inline script to prevent theme flash -->
+    <script>
+    (function() {
+      const preferredTheme = localStorage.getItem('theme');
+      let isDark = false;
+      if (preferredTheme) {
+        isDark = preferredTheme === 'dark';
+      } else {
+        isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+      if (isDark) {
+        // Apply to <html> element for earliest effect
+        document.documentElement.classList.add('dark-mode');
+      }
+    })();
+    </script>
+    <!-- scripts' END -->
+   
+    
+</head>
+<body>
+
+    
+
+    <header>
+        <div style="position: fixed; top: 1rem; left: 1rem; z-index: 1000;">
+            <a href="/blog" aria-label="Go to Blog" class="blog-icon-link" title="Back to Blog">
+                &larr; <!-- Back to Blog  -->
+            </a>
+        </div>
+        <div style="position: fixed; top: 1rem; right: 1rem; z-index: 1000;">
+            <div id="theme-toggle" aria-label="Toggle Theme" tabindex="0" style="cursor:pointer; display:inline-block;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM12 15c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3zM1 11h3v2H1zM11 1h2v3h-2zM11 20h2v3h-2zM4.22 5.64l1.42-1.42l1.41 1.41l-1.42 1.42zM16.95 18.36l1.42-1.42l1.41 1.41l-1.42 1.42zM20 11h3v2h-3zM3.51 18.36l1.41-1.41l1.42 1.42l-1.41 1.41zM16.95 5.64l1.41-1.41l1.42 1.42l-1.41 1.41z"></path></svg>
+        </div>
+        <div class="header-content">
+            <span class="logo">Bloggr</span>
+        </div>
+    </header>
+    <main>
+        <article id="blog-post" class="blog-post-full">
+            <% if (post) { %>
+                <h1><%= post.title %></h1>
+                <p class="post-meta">Published on: <%= new Date(post.date).toLocaleDateString() %></p>
+                <hr class="my-4"> <!-- a separator -->
+                <div class="post-content">
+                    <%- post.content %> <!-- Output raw HTML content -->
+                </div>
+            <% } else { %>
+                <h1>Post not found</h1>
+                <p>The requested blog post could not be found.</p>
+            <% } %>
+        </article>
+    </main>
+    <script src="/js/utils.js"></script>
+    <!--  Call initializeTheme after DOM is ready -->
+    <script>
+        document.addEventListener('DOMContentLoaded', initializeTheme);
+    </script>
+    
+</body>
+</html>

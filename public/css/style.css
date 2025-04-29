@@ -1,0 +1,871 @@
+/* make sure body is on top */
+body {
+  position: relative;
+  z-index: 0;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+
+
+/* stick this behind everything, fixed to the viewport */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+
+  background-image:
+    radial-gradient(ellipse at bottom left, rgba(104,128,138,.4) 10%, rgba(138,114,76,0) 40%),
+    linear-gradient(to bottom,      rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%),
+    linear-gradient(135deg,         #670d10 0%,          #092756 100%);
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-size: cover, cover, cover;
+  background-position: left bottom, top center, center center;
+}
+
+
+
+ /* --- Theme Styles --- */
+ /* Light Mode (Default - when .dark-mode is NOT present) */
+/* Dark Theme Background (fixes the gradient in place) */
+html.dark-mode body {
+  /* same three layers as before */
+  background-image:
+    radial-gradient(ellipse at bottom left, rgba(104,128,138,.4) 10%, rgba(138,114,76,0) 40%),
+    linear-gradient(to bottom, rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%),
+    linear-gradient(135deg, #670d10 0%, #092756 100%);
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-attachment: fixed, fixed, fixed;
+  background-position: left bottom, top center, center center;
+  background-size: cover, cover, cover;
+
+  /* text color etc */
+  color: var(--foreground);
+}
+
+/* a rule for theme toggle icon color in dark mode */
+html.dark-mode #theme-toggle svg {
+  fill: #ededed; /* Use foreground color variable for fill */
+  stroke: #ededed; /* Use foreground color variable for stroke */
+}
+
+
+/* Light‐mode background */
+html:not(.dark-mode) body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1;
+
+  background-image:
+    linear-gradient(135deg, #f0f9ff 0%, #cbebff 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+/* Dark‐mode background */
+html.dark-mode body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1;
+
+  background-image:
+    radial-gradient(ellipse at bottom left, rgba(104,128,138,.4) 10%, rgba(138,114,76,0) 40%),
+    linear-gradient(to bottom, rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%),
+    linear-gradient(135deg, #670d10 0%, #092756 100%);
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-size: cover, cover, cover;
+  background-position: left bottom, top center, center center;
+}
+
+
+ /* Ensure links adapt to theme */
+ html:not(.dark-mode) body a {
+  color: #007bff; /* Standard blue link for light mode */
+}
+html.dark-mode body a {
+  color: #60a5fa; /* Lighter blue link for dark mode */
+}
+/* END CHANGE */
+body a:hover {
+  text-decoration: underline;
+}
+ /* --- End Theme Styles --- */
+
+
+ /* Basic Blog Post Article Styling */
+ article {
+   /* Add some default styling for articles if needed */
+   /* Example: max-width: 800px; margin: 2rem auto; */
+ }
+
+ article h1 { /* Style the main title if rendered inside article */
+   font-size: 2.25rem; /* Example size */
+   margin-bottom: 1rem;
+   font-weight: 600;
+ }
+
+ /* New snippet: force‐apply blog post title styling */
+.blog-post-item h2 {
+  font-size: 1.75rem;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+  font-weight: 600;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.25em;
+  /* center just so you can see it immediately */
+  text-align: center !important;
+}
+
+
+
+ article p {
+   line-height: 1.7; /* Improve readability */
+   margin-bottom: 1.25em; /* Space between paragraphs */
+   text-align: justify; /* Justify text */
+ }
+
+ article ul,
+ article ol {
+   margin-bottom: 1.25em;
+   padding-left: 1.5em; /* Indent lists */
+ }
+
+ article li {
+   margin-bottom: 0.5em;
+ }
+
+ article code { /* Style inline code */
+   background-color: rgba(128, 128, 128, 0.1);
+   padding: 0.1em 0.3em;
+   border-radius: 4px;
+   font-family: var(--font-mono), monospace; /* Use mono font */
+   font-size: 0.9em;
+ }
+
+ article pre { /* Style code blocks */
+   background-color: rgba(128, 128, 128, 0.1);
+   padding: 1em;
+   border-radius: 4px;
+   overflow-x: auto; /* Allow horizontal scrolling */
+   margin-bottom: 1.25em;
+ }
+
+ article pre code { /* Reset background for code inside pre */
+   background-color: transparent;
+   padding: 0;
+   border-radius: 0;
+   font-size: 0.9em;
+ }
+
+ article img { /* Basic image styling */
+    max-width: 100%; /* Ensure images don't overflow container */
+    max-height: 800px; /* Restrict images to 800px max height */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Center images if needed */
+    margin: 1.5em auto; /* Add space around images */
+    border-radius: 4px; /* Optional rounded corners */
+ }
+
+ article blockquote {
+    border-left: 4px solid #ccc;
+    padding-left: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 1.25em;
+    font-style: italic;
+    color: #555;
+ }
+
+ html {
+    height: 100%; /* Ensure html takes full height */
+ }
+
+ body {
+    min-height: 100vh; /* Ensure body takes at least full viewport height */
+    /* The rest of the body styles remain */
+ }
+
+
+ /* Dark mode adjustments for article elements if needed */
+ body.dark-mode article blockquote {
+    border-left-color: #555; /* Adjust border color */
+    color: #aaa; /* Adjust text color */
+ }
+
+ body.dark-mode article code {
+    background-color: rgba(255, 255, 255, 0.1); /* Lighter background for code */
+ }
+
+ body.dark-mode article pre {
+    background-color: rgba(255, 255, 255, 0.1); /* Lighter background for code blocks */
+ }
+
+ body.dark-mode article hr {
+    border-top-color: #444; /* Darker horizontal rule */
+ }
+
+ /* Snippet text color adjustment */
+ /* Rename this rule in your CSS */
+.post-snippet { color: #555; }
+body.dark-mode .post-snippet { color: #bbb; }
+
+
+
+ /* === Blog Index and Post Layout Customizations === */
+/* === Blog Index and Post Layout Customizations === */
+.blog-main-container,
+#blog-posts-container {
+  width: 70vw;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* blog post title colors for light theme */
+body:not(.dark-mode) #blog-posts-container article.blog-post-item h2 a {
+  color: #333333;        /* Dark grey for light mode */
+  text-decoration: none;
+}
+body:not(.dark-mode) #blog-posts-container article.blog-post-item h2 a:hover {
+  color: #000000;        /* Black on hover in light mode */
+}
+
+/*  blog post title colors for dark theme */
+body.dark-mode #blog-posts-container article.blog-post-item h2 a {
+  color: #cccccc;        /* Light grey for dark mode */
+  text-decoration: none;
+}
+body.dark-mode #blog-posts-container article.blog-post-item h2 a:hover {
+  color: #ffffff;        /* White on hover in dark mode */
+}
+
+/* Center pagination controls */
+#pagination-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+/* style pagination links */
+#pagination-controls .pagination-link {
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--foreground);
+}
+#pagination-controls .pagination-link.current {
+  font-weight: bold;
+  background: var(--foreground);
+  color: var(--background);
+}
+
+
+#blog-posts-container ul {
+  
+  margin-top: 5rem;
+  padding: 0;
+}
+
+#blog-posts-container li {
+  margin-left: 0;
+}
+
+#blog-post {
+  width: 80vw;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#blog-post h1,
+#blog-post .text-sm {
+  text-align: center;
+}
+
+#blog-post p {
+  text-align: justify;
+}
+
+
+
+
+
+
+
+
+/*  Read More / Read Less buttons */
+/* styles.css */
+
+
+
+/* Base styles */
+.read-more-button,
+.read-less-btn {
+  display: block;
+  width: fit-content;              /* Ensures button width fits content */
+  margin: 1rem auto;               /* Centers the button horizontally */
+  padding: 0.25rem 0.75rem;        /* Reduced vertical and horizontal padding */
+  font-weight: 600;
+  border-radius: 4px;
+  color: rgb(182, 130, 238) !important;                 /* Updated: text color violet */
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Light mode (default) */
+body:not(.dark-mode) .read-more-button,
+body:not(.dark-mode) .read-less-btn {
+  color: #6c6b6b !important;
+  background: linear-gradient(90deg, #d8dff3 0%, #c5d4f5 100%);
+}
+body:not(.dark-mode) .read-more-button:hover,
+body:not(.dark-mode) .read-less-btn:hover {
+  color: #333333 !important;
+  background: linear-gradient(90deg, #c5d4f5 0%, #dce2f1 100%);
+}
+
+/* Dark mode */
+body.dark-mode .read-more-button,
+body.dark-mode .read-less-btn {
+  color: #6c6b6b !important;
+  background: linear-gradient(90deg, #3b334b 0%, #20385e 100%);
+}
+body.dark-mode .read-more-button:hover,
+body.dark-mode .read-less-btn:hover {
+  color: #1a1a1a !important;
+  background: linear-gradient(90deg, #20385e 0%, #3b334b 100%);
+}
+
+
+
+/* === Header Layout === */
+header {
+  position: relative;
+}
+header .header-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+/* ===  styling for blog-icon-link === */
+.blog-icon-link {
+  position: fixed;                  /* Keep link fixed at top-left */
+  top: 1rem;
+  left: 1rem;
+  display: inline-flex;             /* Align icon/text */
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;             /* Space around text */
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--foreground);
+  border-radius: 8px;               /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  text-decoration: none;            /* Remove default underline */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  /* ensure the box shadow grows to fit its text */
+  white-space: nowrap;               /* never wrap the text :contentReference[oaicite:0]{index=0} */
+  width: fit-content;                /* shrink‐to‐fit content width :contentReference[oaicite:1]{index=1} */
+  min-width: max-content;            /* at least as wide as its content :contentReference[oaicite:2]{index=2} */
+}
+
+/* Light mode adjustments */
+body:not(.dark-mode) .blog-icon-link {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333333;
+}
+body:not(.dark-mode) .blog-icon-link:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark mode adjustments */
+body.dark-mode .blog-icon-link {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ededed;
+}
+body.dark-mode .blog-icon-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* === End of new snippet === */
+
+#theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+}
+
+#newsletter {
+  position: fixed;
+  top: 0.5rem;
+  right: 3rem;
+  z-index: 1000;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 1rem;
+  width: 80vw;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.hero p {
+  max-width: 600px;
+  line-height: 1.6;
+}
+.hero-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+/* Features Section */
+.features-section {
+  padding: 4rem 1rem;
+  width: 80vw;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.features-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+.feature-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.feature-card h3 {
+  margin-bottom: 0.75rem;
+}
+.feature-card p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Waitlist Section */
+.waitlist-section {
+  padding: 4rem 1rem;
+  width: 80vw;
+  max-width: 400px;
+  margin: 4rem auto;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.waitlist-section h2 {
+  margin-bottom: 1.5rem;
+}
+#waitlist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+#waitlist-form input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+#waitlist-form button {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.signup-number-panel {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: var(--foreground);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+
+/* styles.css */
+
+/* New snippet: tooltip styling for blog-icon-link */
+.blog-icon-link {
+  position: relative;
+  display: inline-block;
+}
+.blog-icon-link:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -1.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1001;
+}
+
+/* New snippet: remove default button styles for #theme-toggle */
+#theme-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+}
+
+/* style.css */
+
+/* Global Reset */
+* {
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Dark Theme Background */
+body.dark-mode {
+  background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%, rgba(138,114,76,0) 40%), -moz-linear-gradient(top, rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%), -moz-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+  background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%, rgba(138,114,76,0) 40%), -webkit-linear-gradient(top, rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%), -webkit-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+  background: radial-gradient(ellipse at bottom left, rgba(104,128,138,.4) 10%, rgba(138,114,76,0) 40%), linear-gradient(to bottom, rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%), linear-gradient(135deg, #670d10 0%, #092756 100%);
+}
+
+/* Light Theme Background */
+body:not(.dark-mode) {
+  background: linear-gradient(135deg, #f0f9ff, #cbebff);
+  transition: background 0.3s;
+}
+
+/* Theme Switcher Button */
+.theme-switcher {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  width: 64px;
+  height: 64px;
+  cursor: pointer;
+  outline: none;
+  z-index: 1000;
+}
+
+/* Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Header Styling */
+.login-header h1 {
+  margin: 0 0 1em;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #217093;
+}
+body:not(.dark-mode) .login-header h1 {
+  color: #333;
+}
+
+/* Login Form Styling */
+.login-form {
+  width: 90%;
+  max-width: 400px;
+  padding: 2.25em;
+  border-radius: 0.5em;
+  background-color: rgba(59, 62, 64, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border: none;
+}
+body:not(.dark-mode) .login-form {
+  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(240,240,240,0.9));
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* SVG Container */
+.svgContainer {
+  position: relative;
+  width: 100%;
+  max-width: 220px;
+  margin: 0 auto 1em;
+  pointer-events: none;
+}
+.svgWrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  overflow: visible;
+}
+
+/* Input Groups */
+.inputGroup {
+  margin-bottom: 1.5em;
+}
+.inputGroup input {
+  width: 100%;
+  height: 50px;
+  padding: 0 1em;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid rgba(0,0,0,0.3) !important;;
+  border-radius: 4px;
+  outline: none;
+  background: rgba(0,0,0,0.3) !important;;
+  color: #fff;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+  transition: box-shadow 0.5s ease;
+  box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);
+}
+body:not(.dark-mode) .inputGroup input {
+  background: rgba(255,255,255,0.8);
+  color: #333;
+  text-shadow: none;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+.inputGroup input:focus {
+  box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2);
+}
+
+/* Placeholder Styling */
+input::placeholder {
+  color: rgba(255,255,255,0.7) !important;;
+}
+body:not(.dark-mode) input::placeholder {
+  color: rgba(0,0,0,0.7) !important;; 
+}
+
+/* Button Styling */
+.inputGroup button {
+  width: 100%;
+  height: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #217093;
+  color: #f0f0f0;
+}
+body:not(.dark-mode) .inputGroup button {
+  background-color: #4eb8dd;
+  color: #fff;
+}
+
+/* password visisbility "eye" icon */
+/* Hide Edge’s built-in eye icon */
+::-ms-reveal {
+  display: none !important;
+}
+
+/* Ensure the password input container is positioned */
+.password-group {
+  position: relative;
+}
+
+/* Add right padding to make room for the toggle */
+.password-group input {
+  padding-right: 2.5em;
+}
+
+/* Style the toggle button inside the input field */
+.password-group .password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0.75em;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  width: 2em;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Make the SVG icon itself 2rem */
+.password-group .password-toggle svg {
+  width: 2em;
+  height: 2em;
+}
+
+/* Dark theme: light grey eye icon */
+body.dark-mode .password-group .password-toggle svg path {
+  stroke: #949494 !important;
+}
+
+/* Light theme: dark grey eye icon */
+body:not(.dark-mode) .password-group .password-toggle svg path {
+  stroke: #555 !important;
+}
+
+
+
+/* spinner animation for login button */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.spinner {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  vertical-align: middle;
+  margin-right: 0.5em;
+}
+
+/* Notification Area */
+.notification {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, color 0.3s, opacity 0.5s, transform 0.5s;
+  z-index: 1002;
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+.notification.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.notification.success {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.notification.info {
+  background-color: #2196F3;
+  color: white;
+}
+
+.notification.error {
+  background-color: #f44336;
+  color: white;
+}
+
+
+
+
+/* Footer Links */
+/* .links {
+  position: absolute;
+  list-style: none;
+  width: 180px;
+  bottom: 40px;
+  right: 20px;
+  padding: 0;
+  margin: 0;
+}
+.links li {
+  border-bottom: rgba(255,255,255,0.1) 1px solid;
+}
+.links li a {
+  transition: opacity 0.2s ease-out;
+  font-family: 'Dosis', sans-serif;
+  text-transform: uppercase;
+  text-align: right;
+  padding: 0.25em 0;
+  letter-spacing: 2px;
+  font-weight: 200;
+  font-size: 12px;
+  display: block;
+  width: 100%;
+  opacity: 0.4;
+  color: #FFF;
+}
+.links li a:hover {
+  opacity: 0.8;
+}
+.links li .who:before {
+  opacity: 0.5;
+  content: '@';
+  float: left;
+}
+.links li .blog:before {
+  opacity: 0.5;
+  content: '</>';
+  float: left;
+}
+
+
+ */

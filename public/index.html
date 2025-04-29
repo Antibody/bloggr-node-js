@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Bloggr</title>
+    <script>
+        (function() {
+          const preferredTheme = localStorage.getItem('theme');
+          let isDark = false;
+          if (preferredTheme) {
+            isDark = preferredTheme === 'dark';
+          } else {
+            isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          }
+          if (isDark) {
+            // Apply to <html> element for earliest effect
+            document.documentElement.classList.add('dark-mode');
+          }
+        })();
+        </script>
+    <link rel="stylesheet" href="/css/style.css">
+    
+    
+</head>
+<body>
+    <!-- header bloggin platform -->
+<header>
+    <!--  fixed-position blog icon link with native tooltip -->
+    <div style="position: fixed; top: 1rem; left: 1rem; z-index: 1000;">
+      <a href="/blog"
+         class="blog-icon-link"
+         aria-label="Blog"
+         title="Blog">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="currentColor" width="32" height="32" style="display:block" class="jsx-553ab75ed843972b"><g id="SVGRepo_bgCarrier" stroke-width="0" class="jsx-553ab75ed843972b"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" class="jsx-553ab75ed843972b"></g><g id="SVGRepo_iconCarrier" class="jsx-553ab75ed843972b"><circle style="fill:#3A99D7" cx="256" cy="255.997" r="255.997" class="jsx-553ab75ed843972b"></circle><path style="fill:#2682BF" d="M506.485,309.123C482.052,424.985,379.116,512,256.002,512c-3.153,0-6.306,0-9.458-0.158L133.835,399.133l222.897-239.605L506.485,309.28V309.123z" class="jsx-553ab75ed843972b"></path><path style="fill:#F7F7F8" d="M133.835,113.025h176.395l46.503,46.503v239.605H133.835V113.025z" class="jsx-553ab75ed843972b"></path><path style="fill:#CCCCCC" d="M310.229,113.025v46.503h46.503L310.229,113.025z" class="jsx-553ab75ed843972b"></path><g class="jsx-553ab75ed843972b"><rect x="166.305" y="175.768" style="fill:#E84F4F" width="150.222" height="14.345" class="jsx-553ab75ed843972b"></rect><rect x="166.305" y="202.405" style="fill:#E84F4F" width="150.222" height="14.345" class="jsx-553ab75ed843972b"></rect><rect x="166.305" y="228.891" style="fill:#E84F4F" width="150.222" height="14.345" class="jsx-553ab75ed843972b"></rect><rect x="166.305" y="255.367" style="fill:#E84F4F" width="150.222" height="14.345" class="jsx-553ab75ed843972b"></rect><rect x="166.305" y="282.013" style="fill:#E84F4F" width="115.071" height="14.345" class="jsx-553ab75ed843972b"></rect><polygon style="fill:#E84F4F" points="370.494,232.194 403.311,263.364 318.097,352.818 285.281,321.647" class="jsx-553ab75ed843972b"></polygon></g><path style="fill:#FFF094" d="M285.323,321.576l32.788,31.212l-32.788,14.503l-12.769-12.137L285.323,321.576z" class="jsx-553ab75ed843972b"></path><path style="fill:#F0DD85" d="M301.559,337.182l16.552,15.606l-32.788,14.503l-6.463-6.148l22.857-23.961L301.559,337.182L301.559,337.182z" class="jsx-553ab75ed843972b"></path><path style="fill:#00CC96" d="M396.14,221.32l17.183,16.236c4.414,4.257,3.468,12.296-1.891,18.128l-7.567,7.882l-0.158,0.158l-33.103-31.527l0.158-0.158l7.567-7.882c5.517-5.674,13.556-7.093,17.97-2.838L396.14,221.32L396.14,221.32z" class="jsx-553ab75ed843972b"></path><path style="fill:#12B589" d="M404.652,229.359l8.67,8.197c4.414,4.257,3.468,12.296-1.891,18.128l-7.567,7.882l-0.158,0.158l-16.709-15.764l17.655-18.443V229.359z" class="jsx-553ab75ed843972b"></path><path style="fill:#9D9E9E" d="M285.323,367.291l-23.015,11.192l10.088-23.33l12.769,12.137h0.158V367.291z" class="jsx-553ab75ed843972b"></path><path style="fill:#727271" d="M285.323,367.291l-23.015,11.192l16.552-17.34L285.323,367.291z" class="jsx-553ab75ed843972b"></path></g></svg>
+      </a>
+    </div>
+  
+    <!-- Existing header-content wrapper -->
+    <div class="header-content">
+      <!-- <span class="logo">Bloggr</span> -->
+  
+      <!-- New snippet: theme toggle as div (no <button>) -->
+      <div id="theme-toggle"
+           
+           tabindex="0"
+           aria-label="Toggle Theme"
+           title="Toggle Theme">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon h-4 w-4 md:h-5 md:w-5"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+  
+
+    <main>
+        <section class="hero">
+            <h1>Welcome to Bloggr</h1>
+            <p>
+                Bloggr is an open source blog platform built for developers and tech enthusiasts.
+                Seamlessly integrate it with your Node.js projects. Nex.js integration is <a href="https://bloggr.dev" target="_blank" >here</a>.
+                Join our community to build, share, and contribute to a growing platform that empowers you to own your blog.
+            </p>
+            <div class="hero-links">
+                <a href="https://github.com/antibody/bloggr" target="_blank" rel="noopener noreferrer" class="button github">
+                    Contribute on GitHub
+                </a>
+                <a href="https://bloggr.dev/docs" target="_blank" rel="noopener noreferrer" class="button docs">
+                    Documentation
+                </a>
+            </div>
+        </section>
+
+        <section id="features" class="features-section">
+             <h2>Features</h2>
+             <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Simple and Intuitive Interface</h3>
+                    <p>Focus on writing, not on complex configurations. Our interface is designed for ease of use.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Powered by Supabase</h3>
+                    <p>Leverage secure and scalable data storage and authentication with Supabase.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Customizable Themes</h3>
+                    <p>Currently only Dark and Light theme switches are available</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Markdown Support</h3>
+                    <p>Write and format your content using Markdown for a clean and efficient writing experience.</p>
+                </div>
+             </div>
+        </section>
+
+        <section class="waitlist-section">
+            <h2>Join Newsletter For Updates</h2>
+            <form id="waitlist-form">
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <button type="submit" id="waitlist-submit-button">
+                    Join Newsletter
+                </button>
+                <div class="loader" style="display: none;">Processing...</div> <!-- Simple text loader -->
+            </form>
+            <div id="signup-number-panel" class="signup-number-panel" style="display: none;" role="status">
+                Your signup number is: <strong id="signup-number"></strong>
+            </div>
+             <p class="powered-by">
+                 Powered by <a href="https://waitlist.onl" target="_blank" rel="noopener noreferrer">Waitlist.onl</a>
+             </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Built with ❤️ by the open source community.</p>
+        <p>
+            Contribute at
+            <a href="https://github.com/antibody/bloggr" target="_blank" rel="noopener noreferrer">
+                github.com/antibody/bloggr
+            </a>
+        </p>
+    </footer>
+
+    <!-- Notification container (if using a library like Notyf) -->
+    <!-- <div id="notyf-container"></div> -->
+
+    <!-- Include Supabase JS library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Include main JS file -->
+    <script src="/js/utils.js" defer></script>
+    <script src="/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css"/>
+  <link rel="stylesheet" href="/css/style.css"> <!-- Reuse main styles -->
+  <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+</head>
+<body class="dark bg-gray-900 text-gray-100 h-screen w-screen flex flex-col">
+  <header class="flex-shrink-0">
+    <div class="fixed top-4 left-4 z-50">
+      <a href="/" aria-label="Go to Home" class="text-blue-400 hover:underline">&larr; Back to Home</a>
+    </div>
+    <div class="flex items-center justify-center py-6">
+      <span class="text-2xl font-bold tracking-tight">Bloggr</span>
+
+      <a href="newsletter">
+      <button id="newsletter" aria-label="News Letter" class="ml-4 p-2 rounded bg-gray-800 hover:bg-gray-700">
+        <!-- SVG Published by:
+              Creazilla
+              Author: Mozilla
+              Source: Firefox OS Emoji
+              https://creazilla.com/media/emoji/52865/incoming-envelope -->
+<svg xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 512 512"
+role="img"
+aria-hidden="true"
+class="icon-svg"
+style="width:24px; height:24px; display:block;">
+<!-- Layer 2 -->
+<g id="Layer_2">
+<path fill="#96A9B2"
+     d="M465.624,390.73c2.375-4.033-140.634-133.403-140.634-133.403c-17.984-15.829-29.211-16.078-53.943,0
+        c0,0-199.388,129.266-198.819,133.244l-0.041,0.029c0.01,0.035,0.034,0.058,0.05,0.09c0.589,3.992,1.91,7.668,3.859,10.884
+        c0.832,1.373,1.944,2.523,2.995,3.719l-0.075,0.049c0.084,0.093,0.214,0.136,0.298,0.229c4.476,4.962,10.787,8.176,18.379,9.093
+        c0.119,0.015,0.203,0.078,0.322,0.093h0.47c1.16,0.113,2.224,0.398,3.438,0.398h323.456c15.927,0,31.615-10.016,40.049-24.057
+        c0.087-0.105,0.202-0.18,0.284-0.287L465.624,390.73z"/>
+</g>
+<!-- Layer 3 -->
+<g id="Layer_3">
+<path fill="#B9C5C6"
+     d="M301.505,242.48L73.339,389.467l45.592-208.232c4.444-20.296,24.496-36.747,44.792-36.747h318.472
+        c20.296,0,33.145,16.45,28.701,36.747l-45.592,208.232L301.505,242.48z"/>
+</g>
+<!-- Layer 4 -->
+<g id="Layer_4">
+<path fill="#EDECE6"
+     d="M124.015,168.458l138.552,131.427c17.707,15.585,28.761,15.831,53.112,0l195.795-131.219
+        c-1.748-5.254-5.179-9.405-9.416-12.715l2.693-1.801c-4.491-5.105-10.935-8.416-18.706-9.27l-326.329,0.011
+        c-8.12,0.843-16.028,4.165-22.74,9.259l1.892,1.778C133.247,159.194,128.055,163.273,124.015,168.458z"/>
+</g>
+<!-- Layer 5 -->
+<g id="Layer_5">
+<path fill="#DCE2E2"
+     d="M123.9,168.734c-2.339,3.971,138.467,131.347,138.467,131.347c17.707,15.585,28.761,15.831,53.112,0
+        c0,0,196.315-127.274,195.755-131.19l0.041-0.029c-0.01-0.034-0.033-0.057-0.049-0.089c-0.58-3.931-1.88-7.549-3.799-10.717
+        c-0.819-1.352-1.914-2.484-2.949-3.662l0.074-0.049c-0.083-0.091-0.211-0.134-0.294-0.226c-4.407-4.885-10.621-8.05-18.095-8.953
+        c-0.117-0.014-0.2-0.077-0.317-0.091h-0.463c-1.142-0.111-2.19-0.392-3.385-0.392H163.525c-15.682,0-31.128,9.862-39.431,23.686
+        c-0.085,0.103-0.199,0.177-0.279,0.283L123.9,168.734z"/>
+</g>
+<!-- Layer 6 -->
+<g id="Layer_6">
+<path fill="#59CAFC"
+     d="M94.447,208.62H14.44c-6.627,0-12-5.373-12-12s5.373-12,12-12h80.007c6.627,0,12,5.373,12,12
+        S101.075,208.62,94.447,208.62z M81.339,278.856c0-6.627-5.373-12-12-12H14.44c-6.627,0-12,5.373-12,12s5.373,12,12,12h54.899
+        C75.967,290.856,81.339,285.483,81.339,278.856z M63.124,361.093c0-6.627-5.373-12-12-12H14.44c-6.627,0-12,5.373-12,12
+        s5.373,12,12,12h36.684C57.751,373.093,63.124,367.72,63.124,361.093z"/>
+</g>
+</svg>
+
+      </a>
+
+      </button>
+      <button id="theme-toggle" aria-label="Toggle Theme" class="ml-4 p-2 rounded bg-gray-800 hover:bg-gray-700">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.62-.14 2.37-.36-1.36-.78-2.37-2.17-2.37-3.79 0-2.48 2.02-4.5 4.5-4.5 1.62 0 3.01 1.01 3.79 2.37.22-.75.36-1.54.36-2.37 0-4.97-4.03-9-9-9z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- New code snippet: changed to overflow-hidden so child sections scroll independently -->
+  <main class="flex-grow overflow-hidden w-full">
+    <!-- New code snippet: added min-h-0 to allow flex children to shrink -->
+    <div class="w-full h-full p-6 bg-gray-900 rounded-lg shadow-lg flex flex-col min-h-0">
+      <h1 class="text-3xl font-bold mb-8">Admin Dashboard</h1>
+      <!-- New code snippet: added min-h-0 and overflow-hidden for independent section scrolling -->
+      <div class="flex flex-col md:flex-row gap-8 flex-grow min-h-0 overflow-hidden">
+        <!-- Manage Posts -->
+        <section class="md:w-1/3 flex flex-col space-y-4 min-h-0">
+          <h2 class="text-xl font-semibold border-b pb-2 border-gray-300 dark:border-gray-700 sticky top-0 bg-gray-900 z-10">
+            Manage Posts
+          </h2>
+          <!-- New code snippet: flex-1 and overflow-y-auto for independent scroll -->
+          <ul id="admin-posts-list" class="flex-1 overflow-y-auto"></ul>
+        </section>
+
+        <!-- Editor Section -->
+        <section class="md:w-2/3 flex flex-col space-y-4 border-t md:border-t-0 md:border-l md:pl-8 pt-8 md:pt-0 border-gray-300 dark:border-gray-700 min-h-0 overflow-y-auto">
+          <h2 id="editor-title" class="text-2xl font-bold sticky top-0 bg-gray-900 z-10 pt-8 md:pt-0 pb-2">
+            Create New Blog Post
+          </h2>
+          <!-- New code snippet: flex-1 and overflow-y-auto for independent scroll -->
+          <form id="admin-post-form" class="flex flex-col space-y-4 flex-1 overflow-y-auto">
+            <input type="hidden" id="editing-slug" value="">
+
+            <div>
+              <label for="post-title" class="block text-sm font-medium text-gray-300 mb-1">Title:</label>
+              <input
+                id="post-title"
+                type="text"
+                required
+                class="block w-full rounded-md border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 bg-gray-800 text-gray-100"
+              />
+            </div>
+
+            <div>
+              <label for="post-date" class="block text-sm font-medium text-gray-300 mb-1">Date:</label>
+              <input
+                id="post-date"
+                type="datetime-local"
+                required
+                class="block w-full rounded-md border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 bg-gray-800 text-gray-100"
+              />
+            </div>
+
+            <div>
+              <label for="post-seo-keywords" class="block text-sm font-medium text-gray-300 mb-1">SEO Keywords:</label>
+              <input
+                id="post-seo-keywords"
+                type="text"
+                class="block w-full rounded-md border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 bg-gray-800 text-gray-100"
+              />
+            </div>
+
+            <div>
+              <label for="post-seo-description" class="block text-sm font-medium text-gray-300 mb-1">SEO Description:</label>
+              <textarea
+                id="post-seo-description"
+                rows="2"
+                class="block w-full rounded-md border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 bg-gray-800 text-gray-100"
+              ></textarea>
+            </div>
+
+            <div>
+              <label for="post-content" class="block text-sm font-medium text-gray-300 mb-1">Content:</label>
+              <textarea id="post-content"></textarea>
+            </div>
+
+            <div>
+              <button
+                id="upload-image-btn"
+                type="button"
+                class="image-upload-btn bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded"
+              >
+                <i class="fas fa-image"></i> Upload Image
+              </button>
+              <input id="image-input" type="file" accept="image/*" style="display:none;"/>
+            </div>
+
+            <div class="flex space-x-3 mt-auto">
+              <button
+                id="save-post-btn"
+                type="submit"
+                class="px-4 py-2 font-medium text-white bg-green-600 rounded hover:bg-green-700"
+              >
+                Save Post
+              </button>
+              <button
+                id="cancel-edit-btn"
+                type="button"
+                class="px-4 py-2 font-medium text-gray-300 bg-gray-600 rounded hover:bg-gray-500 hidden"
+              >
+                Cancel Edit
+              </button>
+              <button
+                id="clear-editor-btn"
+                type="button"
+                class="px-4 py-2 font-medium text-gray-300 bg-gray-600 rounded hover:bg-gray-500"
+              >
+                Clear Editor
+              </button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div id="notification-area"></div>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/admin.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+  <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+</body>
+</html>
