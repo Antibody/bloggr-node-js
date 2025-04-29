@@ -17,7 +17,7 @@ For those familiar with Node.js, Supabase, and Resend, here's the quick setup gu
 
 1.  **Supabase Project:** Create a Supabase project.
 2.  **Resend Account:** Create a Resend account and verify a sender email.
-3.  **Environment Variables:** Configure **all** required environment variables (Supabase, Resend, Admin, Server, Telemetry) in a `.env` file for local development or directly on your hosting platform for production. See "⚠️ CRITICAL SETUP INSTRUCTIONS ⚠️" and "Environment Variables" sections for details.
+3.  **Environment Variables:** Configure **all** required environment variables (Supabase, Resend, Admin, Server, Telemetry) in a `.env` file for local development or directly on your hosting platform for production. See "Environment Variables" below for details.
 4.  **Admin User in Supabase Auth:** In Supabase `Auth > Users`, add an admin user with an email and password that matches your `ADMIN_ALLOWED_EMAIL` environment variable.
 5.  **Storage Bucket:** If you plan to add images to your posts, create a **public** Supabase Storage bucket named exactly `blog-images`. Ensure **public read** access policies are set up.
 6.  **Database Tables:** The `blog_posts` and `waitlist` tables will be created automatically on the first admin login via `/api/login`. Ensure RLS is enabled and policies are correctly configured (public read for both, authenticated write for `blog_posts`, public insert for `waitlist`, admin full access for both).
