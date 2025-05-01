@@ -12,7 +12,8 @@
   },
   "author": "Maxim Bespalov (https://github.com/Antibody/bloggr-node-js)", 
   "license": "MIT", 
-  "keywords": ["blog engine", "CMS", "blog platform", "ejs"],
+  "keywords": ["blog engine", "CMS", "blog platform", "ejs", "newsletter"],
+  "description": "Bloggr: A modern, full-stack Node.js-based blogging platform with newsletter",
 
   "dependencies": {
     "@supabase/supabase-js": "^2.49.4",
