@@ -6,8 +6,8 @@
   "engines": {
     "node": "20.x"
   },
-  "scripts": {
-    "dev": "next dev --turbopack",
+   "scripts": {
+    "dev": "node server.mjs",    
     "start": "node server.mjs"
   },
   "author": "Maxim Bespalov (https://github.com/Antibody/bloggr-node-js)", 
