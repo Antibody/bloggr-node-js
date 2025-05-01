@@ -12,6 +12,8 @@
   },
   "author": "Maxim Bespalov (https://github.com/Antibody/bloggr-node-js)", 
   "license": "MIT", 
+  "keywords": ["blog engine", "CMS", "blog platform", "ejs"],
+
   "dependencies": {
     "@supabase/supabase-js": "^2.49.4",
     "cookie-parser": "^1.4.7",
