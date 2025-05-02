@@ -823,8 +823,38 @@ body:not(.dark-mode) .password-group .password-toggle svg path {
   color: white;
 }
 
+ /* Link styles for frontpage */
+.powered-by {
+      text-align: center;           
+      font-size: 0.8rem;            
+      margin-top: 1rem;             
+      color: #777;                   
+    }
 
+    .powered-by a {
+      color: #5B21B6;               
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 2px solid transparent;  
+      transition: color 0.3s ease, border-bottom 0.3s ease;
+    }
 
+    .powered-by a:hover {
+      border-bottom-color: #5B21B6;
+    }
+
+    
+    body.dark-mode .powered-by {
+      color: #ccc;
+    }
+
+    body.dark-mode .powered-by a {
+      color: #A78BFA;
+    }
+
+    body.dark-mode .powered-by a:hover {
+      border-bottom-color: #A78BFA;
+    }
 
 /* Footer Links */
 /* .links {
