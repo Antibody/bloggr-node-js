@@ -10,7 +10,10 @@
     "dev": "node server.mjs",    
     "start": "node server.mjs"
   },
-  "author": "Maxim Bespalov (https://github.com/Antibody/bloggr-node-js)", 
+  "author": {
+    "name": "Maxim Bespalov",
+    "url": "https://github.com/Antibody/bloggr-node-js"
+    }, 
   "license": "MIT", 
   "keywords": ["blog engine", "CMS", "blog platform", "ejs", "newsletter"],
   "description": "Bloggr: A modern, full-stack Node.js-based blogging platform with newsletter",
